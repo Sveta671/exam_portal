@@ -1,0 +1,10 @@
+from django.contrib import admin
+from .models import ksexam
+
+class ksexamAdmin(admin.ModelAdmin):
+    list_display = ('name', 'exam_date', 'is_public')
+    search_fields = ('name', 'users__email')
+    list_filter = ('is_public', 'created_at', 'exam_date')
+    filter_horizontal = ('users',)
+
+admin.site.register(ksexam, ksexamAdmin)
